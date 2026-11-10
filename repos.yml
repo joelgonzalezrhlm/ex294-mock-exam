@@ -1,0 +1,20 @@
+---
+- name: repos
+  hosts: all
+  tasks:
+    - name: BaseOS
+      ansible.builtin.yum_repository:
+        name: EX294_BASE
+        description: Ex294 base software
+        baseurl: x
+        gpgkey: x
+        gpgcheck: true
+        enabled: true
+    - name: AppStream
+      ansible.builtin.yum_repository:
+        name: EX294_STREAM
+        description: Ex294 stream software
+        baseurl: x
+        gpgkey: x
+        gpgcheck: true
+        enabled: true
