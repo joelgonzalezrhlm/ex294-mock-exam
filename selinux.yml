@@ -1,0 +1,12 @@
+---
+- name: Manage SELinux policy example
+  hosts: all
+  vars:
+    selinux_policy: targeted
+    selinux_state: enforcing
+  tasks:
+    - name: Execute the role and reboot in a rescue block
+      block:
+        - name: Include selinux role
+          include_role:
+            name: rhel-system-roles.selinux
