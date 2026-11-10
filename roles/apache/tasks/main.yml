@@ -1,0 +1,22 @@
+- ansible.builtin.dnf:
+    name:
+    - httpd
+    - firewalld
+    state: present
+- ansible.builtin.service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+  - httpd
+  - firewalld
+- name: Permanently enable http service, also enable it immediately if possible
+  ansible.posix.firewalld:
+    service: http
+    state: enabled
+    permanent: true
+    immediate: true
+- name: template
+  ansible.builtin.template:
+    src: index.html.j2
+    dest: /var/www/html/index.html

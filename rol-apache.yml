@@ -1,0 +1,5 @@
+---
+- name: Use rol apache
+  hosts: all
+  roles:
+    - apache
